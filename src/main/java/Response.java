@@ -1,5 +1,6 @@
 import com.fastcgi.FCGIInterface;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -82,10 +83,20 @@ public class Response {
 
 
     public String sendSuccessResponse(String body) {
-        System.out.println("Content-Type: application/json");
-        System.out.println("Status: 200 OK");
+        String send = new String().formatted();
+        String response = String.format("""
+                HTTP/1.1 200 OK
+                Content-Type: application/json
+                Content-Length: %d
+              
+                """ + body
+        , body.getBytes(StandardCharsets.UTF_8).length);
+        logFunc("AAAAAA " + response);
+/*        System.out.println("HTTP/1.1 200 OK");
+        System.out.println("Content-Type: application/html");
         System.out.println();
-        System.out.println(body);
+        System.out.println(body);*/
+        System.out.println(response);
         return "";
     }
 
