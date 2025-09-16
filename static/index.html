@@ -3,104 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <title>Web lab 1</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }.container {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .main-content {
+            flex: 1;
+        }
+
+        .results-sidebar {
+            width: 800px;
+        }
+
+        header {
+            height: 150px;
+            width: 200px;
+            font-style: italic;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            background-color: #f4f4f4;
+        }
+
+        input {
+            padding-left: 5%, 5%;
+        }
+
+        #resultsTable {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        ::selection {
+        color: red;
+        background: green;
+        }
+
+        #resultsTable th, #resultsTable td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        #resultsTable th {
+            background-color: #f2f2f2;
+            position: sticky;
+            top: 0;
+        }
+
+        #resultsTable tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .results-container {
+            max-height: 900px;
+            overflow-y: auto;
+        }
+    </style>
 </head>
 <body>
-<table>
-    <tr>
-        <td></td>
-        <td>Pakhomov Daniil</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>P3216</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>467037</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td><canvas id="draw" width="840" height="400"></canvas></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>
-            <legend>Choose X coordinate:</legend>
-            <input type="checkbox" class="checkbox" id="-3" name="X-3" value="-3">
-            <label for="-3"> -3</label>
-            <input type="checkbox" class="checkbox" id="-2" name="X-2" value="-2">
-            <label for="-2"> -2</label>
-            <input type="checkbox" class="checkbox" id="-1" name="X-1" value="-1">
-            <label for="-1"> -1</label>
-            <input type="checkbox" class="checkbox" id="0" name="X0" value="0">
-            <label for="0"> 0</label>
-            <input type="checkbox" class="checkbox" id="1" name="X1" value="1">
-            <label for="1"> 1</label>
-            <input type="checkbox" class="checkbox" id="2" name="X2" value="2">
-            <label for="2"> 2</label>
-            <input type="checkbox" class="checkbox" id="3" name="X3" value="3">
-            <label for="3"> 3</label>
-            <input type="checkbox" class="checkbox" id="4" name="X4" value="4">
-            <label for="4"> 4</label>
-            <input type="checkbox" class="checkbox" id="5" name="X5" value="5">
-            <label for="5"> 5</label>
-        </td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td><label for="Y">Choose Y coordinate (from -3 to 5):</label>
-            <div>
-            <input
-                    type="text"
-                    id="Y"
-                    name="yCoordinate"/>
-            </div>
-        </td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>
-            <legend>Choose R value:</legend>
-            <div>
-                <input type="radio" id="R1" name="drone" value="1" checked />
-                <label for="R1">1</label>
+<div class="container">
+    <div class="main-content">
+        <table>
+            <tr>
+                <td></td>
+                <td>
+                    <header>
+                        <p>Pakhomov Daniil</p>
+                        <p>P3216</p>
+                        <p>467037</p>
+                    </header>
+                </td>
+                <td></td>
+            <tr>
+                <td></td>
+                <td><canvas id="draw" width="840" height="400"></canvas></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <legend>Choose X coordinate:</legend>
+                    <input type="checkbox" class="checkbox" id="-3" name="X-3" value="-3">
+                    <label for="-3"> -3</label>
+                    <input type="checkbox" class="checkbox" id="-2" name="X-2" value="-2">
+                    <label for="-2"> -2</label>
+                    <input type="checkbox" class="checkbox" id="-1" name="X-1" value="-1">
+                    <label for="-1"> -1</label>
+                    <input type="checkbox" class="checkbox" id="0" name="X0" value="0">
+                    <label for="0"> 0</label>
+                    <input type="checkbox" class="checkbox" id="1" name="X1" value="1">
+                    <label for="1"> 1</label>
+                    <input type="checkbox" class="checkbox" id="2" name="X2" value="2">
+                    <label for="2"> 2</label>
+                    <input type="checkbox" class="checkbox" id="3" name="X3" value="3">
+                    <label for="3"> 3</label>
+                    <input type="checkbox" class="checkbox" id="4" name="X4" value="4">
+                    <label for="4"> 4</label>
+                    <input type="checkbox" class="checkbox" id="5" name="X5" value="5">
+                    <label for="5"> 5</label>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><label for="Y">Choose Y coordinate (from -3 to 5):</label>
+                    <div>
+                        <input
+                                type="text"
+                                id="Y"
+                                name="yCoordinate"/>
+                    </div>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <legend>Choose R value:</legend>
+                    <div>
+                        <input type="radio" id="R1" name="drone" value="1" checked />
+                        <label for="R1">1</label>
 
-                <input type="radio" id="R2" name="drone" value="2" />
-                <label for="R2">2</label>
+                        <input type="radio" id="R2" name="drone" value="2" />
+                        <label for="R2">2</label>
 
-                <input type="radio" id="R3" name="drone" value="3" />
-                <label for="R3">3</label>
+                        <input type="radio" id="R3" name="drone" value="3" />
+                        <label for="R3">3</label>
 
-                <input type="radio" id="R4" name="drone" value="4" />
-                <label for="R4">4</label>
+                        <input type="radio" id="R4" name="drone" value="4" />
+                        <label for="R4">4</label>
 
-                <input type="radio" id="R5" name="drone" value="5" />
-                <label for="R5">5</label>
-            </div>
-        </td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>
-            <input class="styled" type="button" id="button" value="Send dot's coordinates" />
-            <p id="demo"></p>
-        </td>
-        <td></td>
-    </tr>
-</table>
+                        <input type="radio" id="R5" name="drone" value="5" />
+                        <label for="R5">5</label>
+                    </div>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input class="styled" type="button" id="button" value="Send dot's coordinates" />
+                    <p id="demo"></p>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="results-sidebar">
+        <h3>Results</h3>
+        <div class="results-container">
+            <table id="resultsTable">
+                <thead>
+                <tr>
+                    <th scope="col">X</th>
+                    <th scope="col">Y</th>
+                    <th scope="col">R</th>
+                    <th scope="col">Result</th>
+                    <th scope="col">Run time</th>
+                    <th scope="col">Local time</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 <script src="./script.js"></script>
 </body>
 </html>
-
-<style>
-    td {
-    color: red
-    }
-</style>

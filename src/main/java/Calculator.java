@@ -1,6 +1,6 @@
 public class Calculator {
 
-    public boolean calculating(Integer x, Integer y, Integer r) {
+    public boolean calculating(Integer x, Double y, Integer r) {
         if ((x >= 0) && (y >= 0) && ((x * x + y * y) <= r * r)){
             return true;
         }
